@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LOGIN PAGE</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-400 ">
+    <div class="site-header">
+       <nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+  <div class="flex items-center space-x-2">
+
+
+    <img class="h-9 w-auto mr-2 "
+    src="assets/images/logo.png" alt="Charity Minds" class="logo">
+    <span class="site-title">CHARITY MINDS</span>
+  </div>
+  
+<div class="nav-box" position:absolute; border: 10px> 
+ <nav>
+  <ul  class="flex gap-4  ml-auto ">
+    <li>
+      <a href="HOME.html">Home</a>
+    </li>
+    <li>
+      <a href="Register.html">Register</a>
+    </li>
+    <li>
+      <a href="Dashboard.html">Dashboard</a>
+    </li>
+    
+  </ul>
+  </header>
+</nav>
+</div>
+
+  <main class="min-h-screen flex items-center justify-center bg-gray-100">
+   <div class="bg-white rounded-lg p-8 w-full max-w-md">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6" >Log in</h1>
+
+    <form  class=" login-form" action="#"  method="post" autocomplete="on" >
+      </div>
+        <table>
+        <tr>
+          <td><label for="loginIdentifier">Email or Username:</label></td>
+          <td><input id="loginIdentifier" name="loginIdentifier" type="text" required /></td>
+        </tr>
+        <tr>
+          <td><label for="loginPassword">Password:</label></td>
+          <td><input id="loginPassword" name="loginPassword" type="password" required /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <label class="checkbox">
+            <input type="checkbox" />
+            <span>Remember me</span>
+            </td>
+          </label>
+        </tr>
+      </table>
+    </form>
+     <button
+      type="submit"
+        class="w-auto bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Login
+      </button>
+    
+
+    <div class="login-help">
+      <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+  </main>
+
+
+  
+  
+  <footer class="bg-blue-400 text-white text-center fixed bottom-0  w-full  p-4">
+     © 2025 Login | Designed by Brian
+  </footer>
+</body>
+</html>

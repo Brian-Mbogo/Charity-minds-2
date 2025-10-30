@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-400 ">
+      <div class="site-header">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+  <div class="flex items-center space-x-2">
+    <img class="h-9 w-auto mr-2 "
+    src="assets/images/logo.png" alt="Charity Minds" class="logo">
+    <span class="site-title">CHARITY MINDS</span>
+  </div>
+ 
+<div class="nav-box" position:absolute; border: 10px> 
+ <nav>
+  <ul class="flex gap-4  ml-auto ">
+    <li>
+      <a href="Login.html">Login</a>
+    </li>
+    <li>
+      <a href="Home.html">Home</a>
+    </li>
+    <li>
+      <a href="Dashboard.html">Dashboard</a>
+    </li>
+    
+</ul>
+</header>
+</nav>
+</div>
+
+  <main class="register-wrapper">
+    <h1>Create account</h1>
+    <form class="register-form" action="#" method="post" autocomplete="on">
+      <label for="firstName">First name</label>
+      <input id="firstName" name="firstName" type="text" required />
+
+      <label for="lastName">Last name</label>
+      <input id="lastName" name="lastName" type="text" required />
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="register-help">
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </main>
+    <footer class="bg-blue-400 text-white text-center fixed bottom-0  w-full  p-4">
+     © 2025 Register| Designed by Brian
+  </footer>
+</body>
+</html>
