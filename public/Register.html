@@ -6,7 +6,7 @@
   <title>Register</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body >
     <header class="bg-blue-400 ">
       <div class="site-header">
         <nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
@@ -20,47 +20,116 @@
  <nav>
   <ul class="flex gap-4  ml-auto ">
     <li>
-      <a href="Login.html">Login</a>
+      <a href="Login.html" class="text-red-700">Login</a>
     </li>
     <li>
-      <a href="Home.html">Home</a>
+      <a href="Home.html" class="text-red-700">Home</a>
     </li>
     <li>
-      <a href="Dashboard.html">Dashboard</a>
+      <a href="Dashboard.html" class="text-red-700">Dashboard</a>
     </li>
     
 </ul>
 </header>
 </nav>
 </div>
+<main class="flex items-center justify-center min-h-screen bg-gray-100 px-6">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Create Account</h1>
 
-  <main class="register-wrapper">
-    <h1>Create account</h1>
-    <form class="register-form" action="#" method="post" autocomplete="on">
-      <label for="firstName">First name</label>
-      <input id="firstName" name="firstName" type="text" required />
+    <form 
+      class="flex flex-col space-y-4"
+      action="#"
+      method="post"
+      autocomplete="on"
+    >
+      <!-- First Name -->
+      <div>
+        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+        <input id="firstName" name="firstName" type="text" required placeholder="Brian"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
 
-      <label for="lastName">Last name</label>
-      <input id="lastName" name="lastName" type="text" required />
+      <!-- Last Name -->
+      <div>
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input id="lastName" name="lastName" type="text" required placeholder="Mbogo"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required />
+      <!-- Username -->
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input id="username" name="username" type="text" required placeholder="Mbogo123"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
 
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" required />
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input id="email" name="email" type="email" required placeholder="mbogo456@gmail.com"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
 
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" required />
+      <!-- Phone Number -->
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input id="phone" name="phone" type="tel" required placeholder="+254 700 000 000"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
 
-      <button type="submit">Register</button>
+      <!-- Date of Birth -->
+      <div>
+        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+        <input id="dob" name="dob" type="date" required
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input id="password" name="password" type="password" required placeholder="••••••"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
+
+      <!-- Confirm Password -->
+      <div>
+        <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password" required placeholder="••••••"
+          class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none" />
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="flex items-center space-x-2">
+        <input id="terms" name="terms" type="checkbox" required
+          class="h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-2 focus:ring-blue-400" />
+        <label for="terms" class="text-sm text-gray-700">
+          I accept the <a href="terms.html" class="text-blue-500 hover:underline">Terms and Conditions</a>
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit"
+        class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
+        Register
+      </button>
     </form>
 
-    <div class="register-help">
-      <p>Already have an account? <a href="login.html">Login</a></p>
+    <!-- Login Link -->
+    <div class="mt-4 text-center text-gray-600">
+      <p>Already have an account? <a href="login.html" class="text-blue-500 hover:underline">Login</a></p>
     </div>
-  </main>
+  </div>
+</main>
+
     <footer class="bg-blue-400 text-white text-center fixed bottom-0  w-full  p-4">
      © 2025 Register| Designed by Brian
   </footer>
 </body>
 </html>
+
+
+
+
+
+>
