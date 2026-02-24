@@ -1,75 +1,64 @@
 # Charity Minds 2
 
-Simple multi-page frontend project for a charity platform interface.
+Live site: [https://charity-minds-2.vercel.app](https://charity-minds-2.vercel.app)
 
-## Live Demo
+This is the HTML + Tailwind CSS version of Charity Minds.
 
-- Vercel: [https://charity-minds-2.vercel.app](https://charity-minds-2.vercel.app)
+## Pages in this folder
 
-## Pages
+- `public/index.html`
+- `public/login.html`
+- `public/Register.html`
+- `public/dashboard.html`
+- `public/terms.html`
 
-- `public/index.html` - Home page
-- `public/login.html` - Login page
-- `public/Register.html` - Registration page
-- `public/dashboard.html` - Dashboard with stats and users table
+## Where to run commands
 
-## Tech Stack
+Run all commands inside this folder:
 
-- HTML
-- Tailwind CSS v4 (via `@tailwindcss/cli`)
-- Plain JavaScript (`public/about.js`)
+`C:\Users\( F r E a K )\gomycode\charity-minds-2`
 
-## Project Structure
+## Step-by-step setup
 
-```text
-charity-minds-2/
-├─ public/
-│  ├─ assets/
-│  │  ├─ css/style.css
-│  │  └─ images/logo.png
-│  ├─ index.html
-│  ├─ login.html
-│  ├─ Register.html
-│  ├─ dashboard.html
-│  └─ about.js
-├─ src/
-│  └─ input.css
-├─ package.json
-└─ README.md
+### 1) Open terminal in this folder
+
+```powershell
+cd C:\Users\( F r E a K )\gomycode\charity-minds-2
 ```
 
-## Getting Started
+### 2) Install packages
 
-1. Install dependencies:
-
-```bash
-npm install
+```powershell
+npm.cmd install
 ```
 
-2. Start Tailwind in watch mode:
+### 3) Start Tailwind live build (watch mode)
 
-```bash
-npm run dev
+```powershell
+npm.cmd run dev
 ```
 
-3. Open any page in the browser from the `public` folder, for example:
+What this does:
+
+- Reads `src/input.css`
+- Builds CSS to `public/assets/css/style.css`
+- Rebuilds automatically when you change classes
+
+### 4) Open the pages
+
+Open any page in `public`, for example:
 
 - `public/index.html`
 - `public/dashboard.html`
 
-## Build Notes
+## Main files
 
-- Tailwind input file: `src/input.css`
-- Tailwind output file: `public/assets/css/style.css`
-- If you change classes in HTML, keep `npm run dev` running so CSS updates automatically.
+- `src/input.css` - Tailwind input file
+- `public/assets/css/style.css` - generated output CSS
+- `public/about.js` - small JavaScript file
+- `package.json` - scripts and dependencies
 
-## Current Improvements
+## Notes
 
-- Dashboard navigation is cleaned up and aligned.
-- Welcome message is properly positioned in a dedicated card.
-- Registered users table has professional spacing, striping, and hover states.
-- Registration form supports responsive split fields.
-
-## Author
-
-Brian
+- Keep `npm.cmd run dev` running while editing HTML.
+- If `npm` is blocked in PowerShell, use `npm.cmd` (already shown above).
