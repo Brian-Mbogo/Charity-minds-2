@@ -2,6 +2,10 @@
 
 Simple multi-page frontend project for a charity platform interface.
 
+## Live Demo
+
+- Vercel: `https://charity-minds-2.vercel.app`
+
 ## Pages
 
 - `public/index.html` - Home page
