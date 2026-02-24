@@ -1,161 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Core metadata for browser rendering and responsive layout -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <!-- Shared compiled stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Base layout keeps footer at the bottom of the viewport. */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main dashboard container spacing and width. */
+    .dashboard-shell {
+      width: 100%;
+      max-width: 1100px;
+      margin: 24px auto 100px;
+      padding: 0 16px;
+    }
+
+    /* Top navigation layout. */
+    .site-nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Brand/logo styling. */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.02em;
+    }
+
+    /* Brand logo size. */
+    .brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    /* Navigation link group. */
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Shared link appearance. */
+    .nav-link {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      color: #1f2937;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Hover state for navigation links. */
+    .nav-link:hover {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    /* Active page indicator in navigation. */
+    .nav-link-active {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    /* Welcome card near the top of dashboard content. */
+    .welcome-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-left: 6px solid #1d4ed8;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.05);
+      margin-bottom: 20px;
+    }
+
+    /* Welcome heading style. */
+    .welcome-title {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Welcome helper text style. */
+    .welcome-copy {
+      margin: 4px 0 0;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* Statistic cards layout. */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    /* Individual summary card style. */
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.04);
+    }
+
+    /* Highlighted metric value in a stat card. */
+    .stat-value {
+      margin: 0;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      line-height: 1.2;
+    }
+
+    /* Caption under each stat value. */
+    .stat-label {
+      margin: 8px 0 0;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    /* Container for the users table block. */
+    .table-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.04);
+    }
+
+    /* Header row above the table. */
+    .table-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+
+    /* Title text in table header. */
+    .table-title {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Small badge showing number of users. */
+    .table-meta {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      background: #e2e8f0;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Horizontal scrolling when table is wider than viewport. */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    /* Main users table sizing. */
+    .users-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+    }
+
+    /* Table head visual style. */
+    .users-table thead {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    /* Shared table cell spacing and typography. */
+    .users-table th,
+    .users-table td {
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+
+    /* Header cell font emphasis. */
+    .users-table th {
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    /* Zebra striping for easier row scanning. */
+    .users-table tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    /* Hover highlight for interactive feedback. */
+    .users-table tbody tr:hover {
+      background: #eff6ff;
+    }
+
+    /* Mobile tweak for stacking welcome card content. */
+    @media (max-width: 640px) {
+      .welcome-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+<body class="bg-gray-100 text-gray-900">
+  <!-- Top navigation -->
+  <header class="bg-blue-400">
+    <nav class="site-nav">
+      <!-- Brand block -->
+      <div class="brand">
+        <img src="assets/images/logo.png" alt="Charity Minds logo">
+        <span>CHARITY MINDS</span>
+      </div>
+      <!-- Page links -->
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="login.html" class="nav-link">Login</a></li>
+        <li><a href="Register.html" class="nav-link">Register</a></li>
+        <li><a href="dashboard.html" class="nav-link nav-link-active">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<body  class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-400">
-<nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+  <!-- Main dashboard content -->
+  <main class="dashboard-shell">
+    <!-- Welcome section -->
+    <section class="welcome-card">
+      <div>
+        <h1 class="welcome-title">Welcome, Brian N.G</h1>
+        <p class="welcome-copy">Here is your platform overview and user directory.</p>
+      </div>
+    </section>
 
-   <div class="flex items-center space-x-2">
-    <img class="h-9 w-auto mr-2"
-     src="assets/images/logo.png" alt="Charity Minds" class="logo">
-    <span class="items-center">CHARITY MINDS</span>
-  </div>
+    <!-- Summary cards section -->
+    <section class="stats-grid" aria-label="Summary">
+      <article class="stat-card">
+        <h2 class="stat-value">10</h2>
+        <p class="stat-label">Registered Users</p>
+      </article>
+      <article class="stat-card">
+        <h2 class="stat-value">7</h2>
+        <p class="stat-label">Children Forms Recorded</p>
+      </article>
+      <article class="stat-card">
+        <h2 class="stat-value">56</h2>
+        <p class="stat-label">Visitors</p>
+      </article>
+      <article class="stat-card">
+        <h2 class="stat-value">3</h2>
+        <p class="stat-label">Donations</p>
+      </article>
+    </section>
 
-
-  <ul class="flex gap-4 ml-auto flex end-0">
-    <li>
-      <a href="Login.html" class="text-red-700">Login</a>
-    </li>
-    <li>
-      <a href="Register.html"class="text-red-700">Register</a>
-    </li>
-    <li>
-      <a href="Home.html" class="text-red-700">Home</a>
-    </li>
-    </ul>
-    </header>
-    
-  
-</nav>
-<main class="mb-12" >
-  </div>
- <div class="rounded-lg-0 bg-red-400 ">welcome, Brian N.G</div>
-<div  class="form-container ">
-
-  <!-- Analytics Section -->
-  <section  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 text-center">
-    <div class="bg-yellow-500 rounded-lg p-6 hover:shadow-lg transition">
-      <h2 class="text-3xl font-bold text-blue-600">10</h2>
-      <p class="text-pink-700 mt-2">Registered Users</p>
-    </div>
-    <div class="bg-yellow-500 rounded-lg p-6 hover:shadow-lg transition">
-      <h2 class="text-3xl font-bold text-blue-600">7</h2>
-      <p class="text-pink-700 mt">Children Forms Recorded</p>
-    </div>
-    <div class="bg-yellow-500 rounded-lg p-6 hover:shadow-lg transition">
-      <h2 class="text-3xl font-bold text-blue-600">56</h2>
-      <p class="text-pink-700 mt" >Visitors</p>
-    </div>
-    <div class="bg-yellow-500 rounded-lg p-6 hover:shadow-lg transition">
-      <h2 class="text-3xl font-bold text-blue-600">3</h2>
-      <p class="text-pink-700 mt">Donations</p>
-  </section>
-
-  <!-- Registered Users Table -->
-  <h2 class="text-center font-bold text-2xl  underline">Registered Users</h2>
-
-  <div class="overflow-auto rounded-lg ">
-  <table  class="bg-white min-w-full ">
-<thread class="bg-blue-400 text-white">
-    <tr>
-      <th class="py-3 px-4 text-left">#</th>
-      <th class="py-3 px-4 text-left">First Name</th>
-      <th class="py-3 px-4 text-left">Last Name</th>
-      <th class="py-3 px-4 text-left">Email</th>
-      <th class="py-3 px-4 text-left">Username</th>
-      <th class="py-3 px-4 text-left">Phone</th>
-      <th class="py-3 px-4 text-left">Date of Birth</th>
-      <th class="py-3 px-4 text-left">Gender</th>
-    </tr>
-    <thread>
-        <tbody class="text=gray-700">
-    <tr class="border-b hover:bg-gray-100">
-      <td class="py-2 px-4">1</td>
-      <td class="py-2 px-4" >Jane</td>
-      <td class="py-2 px-4" >Wangeci</td>
-      <td  class="py-2 px-4">jane.wangeci@gmail.com</td>
-      <td  class="py-2 px-4">janed</td>
-      <td class="py-2 px-4" >+254700123456</td>
-      <td  class="py-2 px-4">1998-04-12</td>
-      <td class="py-2 px-4">Female</td>
-    </tr>
-    
-    <tr  class="border-b hover:bg-gray-100" >
-      <td class="py-2 px-4" >2</td>
-      <td class="py-2 px-4">John</td>
-      <td class="py-2 px-4" >Kamau</td>
-      <td  class="py-2 px-4">john.kamau@gmail.com</td>
-      <td  class="py-2 px-4">johnny</td>
-      <td class="py-2 px-4" >+254701987654</td>
-      <td  class="py-2 px-4">1995-07-23</td>
-      <td  class="py-2 px-4">Male</td>
-    </tr>
-    <tr  class="border-b hover:bg-gray-100" >
-      <td class="py-2 px-4" >3</td>
-      <td  class="py-2 px-4">Mary</td>
-      <td class="py-2 px-4" >Wirimu</td>
-      <td  class="py-2 px-4">mary.wirimu@gmail.com</td>
-      <td class="py-2 px-4" >mwirimu</td>
-      <td class="py-2 px-4" >+254702345678</td>
-      <td class="py-2 px-4" >2000-01-30</td>
-      <td class="py-2 px-4" >Female</td>
-    </tr>
-    <tr  class="border-b hover:bg-gray-100" >
-      <td class="py-2 px-4" >4</td>
-      <td class="py-2 px-4" >David</td>
-      <td class="py-2 px-4" >Otieno</td>
-      <td  class="py-2 px-4">david.otieno@gmail.com</td>
-      <td class="py-2 px-4" >davo</td>
-      <td class="py-2 px-4" >+254703456789</td>
-      <td class="py-2 px-4" >1993-11-05</td>
-      <td class="py-2 px-4" >Male</td>
-    </tr>
-    <tr  class="border-b hover:bg-gray-100" >
-      <td class="py-2 px-4" >5</td>
-      <td class="py-2 px-4" >Faith</td>
-      <td class="py-2 px-4" >Mutiso</td>
-      <td  class="py-2 px-4" >faith.mutiso@gmail.com</td>
-      <td   class="py-2 px-4">faithy</td>
-      <td   class="py-2 px-4" >+254704567890</td>
-      <td  class="py-2 px-4" >1999-09-15</td>
-      <td   class="py-2 px-4" >Female</td>
-    </tr>
-    <tr  class="border-b hover:bg-gray-100" >
-      <td  class="py-2 px-4">6</td>
-      <td   class="py-2 px-4">Peter</td>
-      <td  class="py-2 px-4" >Ndungu</td>
-      <td  class="py-2 px-4" >peter.ndungu@gmail.com</td>
-      <td  class="py-2 px-4"  >pndungu</td>
-      <td  class="py-2 px-4" >+254705123789</td>
-      <td  class="py-2 px-4" >1997-05-09</td>
-      <td  class="py-2 px-4" >Male</td>
-    </tr>
-    <tr  class="border-b  hover:bg-gray-100" >
-      <td  class="py-2 px-4" >7</td>
-      <td class="py-2 px-4"  >Angela</td>
-      <td  class="py-2 px-4" >Mutua</td>
-      <td  class="py-2 px-4" >angela.mutua@gmail.com</td>
-      <td class="py-2 px-4"  >angiem</td>
-      <td  class="py-2 px-4" >+254706987321</td>
-      <td class="py-2 px-4" >2002-10-20</td>
-      <td  class="py-2 px-4" >   Female</td>
-    </tr>
-    </tbody>
-  </table>
-  </div>
+    <!-- Users table section -->
+    <section class="table-section" aria-labelledby="users-title">
+      <!-- Table title bar -->
+      <div class="table-header">
+        <h2 id="users-title" class="table-title">Registered Users</h2>
+        <span class="table-meta">7 users</span>
+      </div>
+      <!-- Scroll wrapper for small screens -->
+      <div class="table-wrap">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Phone</th>
+              <th>Date of Birth</th>
+              <th>Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Jane</td>
+              <td>Wangeci</td>
+              <td>jane.wangeci@gmail.com</td>
+              <td>janed</td>
+              <td>+254700123456</td>
+              <td>1998-04-12</td>
+              <td>Female</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>John</td>
+              <td>Kamau</td>
+              <td>john.kamau@gmail.com</td>
+              <td>johnny</td>
+              <td>+254701987654</td>
+              <td>1995-07-23</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Mary</td>
+              <td>Wirimu</td>
+              <td>mary.wirimu@gmail.com</td>
+              <td>mwirimu</td>
+              <td>+254702345678</td>
+              <td>2000-01-30</td>
+              <td>Female</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>David</td>
+              <td>Otieno</td>
+              <td>david.otieno@gmail.com</td>
+              <td>davo</td>
+              <td>+254703456789</td>
+              <td>1993-11-05</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Faith</td>
+              <td>Mutiso</td>
+              <td>faith.mutiso@gmail.com</td>
+              <td>faithy</td>
+              <td>+254704567890</td>
+              <td>1999-09-15</td>
+              <td>Female</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Peter</td>
+              <td>Ndungu</td>
+              <td>peter.ndungu@gmail.com</td>
+              <td>pndungu</td>
+              <td>+254705123789</td>
+              <td>1997-05-09</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Angela</td>
+              <td>Mutua</td>
+              <td>angela.mutua@gmail.com</td>
+              <td>angiem</td>
+              <td>+254706987321</td>
+              <td>2002-10-20</td>
+              <td>Female</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-blue-400 text-white text-center fixed bottom-0  w-full  p-4">
-  
-    © 2025 Dashboard | Designed by Brian
+  <!-- Footer section -->
+  <footer class="bg-blue-400 text-white text-center fixed bottom-0 w-full p-4">
+    &copy; 2025 Dashboard | Designed by Brian
   </footer>
 </body>
-
-
 </html>
